@@ -29,5 +29,6 @@ public class TeacherService {
 
     public void deleteStudent(Long studentId){
         StudentService studentService = StudentService.getStudentService();
+        studentService.deleteStudent(studentId);
     }
 }
