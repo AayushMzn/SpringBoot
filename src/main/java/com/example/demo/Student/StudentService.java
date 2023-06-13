@@ -9,16 +9,17 @@ import java.util.Optional;
 @Service
 public class StudentService {
 
-    private final StudentRepository studentRepository;
+    private static StudentRepository studentRepository = null;
     @Autowired
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
-
-    private StudentService studentServiceObj = new StudentService(studentRepository);
-    public StudentService getStudentService(){
+    //singleton
+    private static StudentService studentServiceObj = new StudentService(studentRepository);
+    public static StudentService getStudentService(){
         return studentServiceObj;
     }
+
 
     public List<Student> getStudents(){
         return studentRepository.findAll();
